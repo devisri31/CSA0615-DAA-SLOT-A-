@@ -1,0 +1,18 @@
+n = int(input("Enter number of participants: "))
+data = []
+
+for i in range(n):
+    name = input("Name: ")
+    score = int(input("Score: "))
+    data.append([name, score])
+
+for i in range(n):
+    m = i
+    for j in range(i + 1, n):
+        if data[j][1] > data[m][1]:
+            m = j
+    data[i], data[m] = data[m], data[i]
+
+print("Ranking:")
+for x in data:
+    print(x[0], x[1])
