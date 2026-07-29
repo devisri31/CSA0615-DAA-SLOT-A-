@@ -1,0 +1,12 @@
+n = int(input("Enter number of scores: "))
+a = list(map(int, input("Enter scores: ").split()))
+k = int(input("Enter top k: "))
+
+for i in range(min(k, n)):
+    m = i
+    for j in range(i + 1, n):
+        if a[j] > a[m]:
+            m = j
+    a[i], a[m] = a[m], a[i]
+
+print("Top", k, "scores:", a[:k])
