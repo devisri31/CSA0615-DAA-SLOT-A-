@@ -1,0 +1,10 @@
+n = int(input("Enter number of elements: "))
+a = list(map(int, input("Enter elements: ").split()))
+
+for i in range(n):
+    for j in range(n - i - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+    print("Pass", i + 1, ":", a)
+
+print("Sorted Array:", a)
