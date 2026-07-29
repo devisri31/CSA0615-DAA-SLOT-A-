@@ -1,0 +1,13 @@
+n = int(input("Enter number of roll numbers: "))
+a = list(map(int, input("Enter roll numbers: ").split()))
+
+for i in range(n):
+    swapped = False
+    for j in range(n - i - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+            swapped = True
+    if not swapped:
+        break
+
+print("Sorted Roll Numbers:", a)
