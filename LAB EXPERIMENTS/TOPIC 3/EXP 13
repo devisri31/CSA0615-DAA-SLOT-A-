@@ -1,0 +1,16 @@
+text = "MISSISSIPPI"
+pattern = "ISSI"
+
+for i in range(len(text) - len(pattern) + 1):
+    count = 0
+    match = True
+
+    for j in range(len(pattern)):
+        count += 1
+        if text[i+j] != pattern[j]:
+            match = False
+            break
+
+    print("Shift:", i,
+          " Comparisons:", count,
+          " Result:", "Match" if match else "Mismatch")
