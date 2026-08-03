@@ -1,0 +1,29 @@
+text = "TTATAGATCTCGTATTCTTTATAGATCTCCTATTCTT"
+pattern = "TATCTT"
+
+comparisons = 0
+positions = []
+
+for i in range(len(text)-len(pattern)+1):
+    print("Shift", i)
+
+    match = True
+
+    for j in range(len(pattern)):
+        comparisons += 1
+        print(text[i+j], pattern[j])
+
+        if text[i+j] != pattern[j]:
+            match = False
+            break
+
+    if match:
+        positions.append(i)
+
+print("\nPattern found at positions:", positions)
+print("Total Comparisons =", comparisons)
+
+print("\nComplexity Analysis")
+print("Best Case : O(m)")
+print("Worst Case : O(nm)")
+print("Space Complexity : O(1)")
