@@ -1,0 +1,15 @@
+text = "ABCDABCABCDA"
+pattern = "ABCDA"
+
+positions = []
+
+for i in range(len(text)-len(pattern)+1):
+    print("Alignment", i)
+
+    if text[i:i+len(pattern)] == pattern:
+        print("Match")
+        positions.append(i)
+    else:
+        print("Mismatch")
+
+print("Pattern occurs at:", positions)
