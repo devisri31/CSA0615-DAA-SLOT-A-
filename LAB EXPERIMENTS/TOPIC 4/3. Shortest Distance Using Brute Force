@@ -1,0 +1,20 @@
+import math
+
+points = [(0, 0), (2, 2), (3, 1), (6, 5)]
+
+min_dist = float('inf')
+closest = None
+
+for i in range(len(points)):
+    for j in range(i + 1, len(points)):
+        x1, y1 = points[i]
+        x2, y2 = points[j]
+
+        dist = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+        if dist < min_dist:
+            min_dist = dist
+            closest = (points[i], points[j])
+
+print("Closest pair:", closest[0], "-", closest[1])
+print("Minimum distance:", min_dist)
