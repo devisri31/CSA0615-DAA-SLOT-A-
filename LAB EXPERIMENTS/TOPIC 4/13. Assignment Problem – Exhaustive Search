@@ -1,0 +1,43 @@
+from itertools import permutations
+
+def total_cost(assignment, cost_matrix):
+    total = 0
+
+    for worker in range(len(assignment)):
+        task = assignment[worker]
+        total += cost_matrix[worker][task]
+
+    return total
+
+
+def assignment_problem(cost_matrix):
+    n = len(cost_matrix)
+
+    min_cost = float('inf')
+    best_assignment = None
+
+    for assignment in permutations(range(n)):
+        cost = total_cost(assignment, cost_matrix)
+
+        if cost < min_cost:
+            min_cost = cost
+            best_assignment = assignment
+
+    return best_assignment, min_cost
+
+
+cost_matrix = [
+    [3, 10, 7],
+    [8, 5, 12],
+    [4, 6, 9]
+]
+
+assignment, cost = assignment_problem(cost_matrix)
+
+print("Optimal Assignment:")
+
+for worker in range(len(assignment)):
+    print("Worker", worker + 1,
+          "-> Task", assignment[worker] + 1)
+
+print("Total Cost:", cost)
