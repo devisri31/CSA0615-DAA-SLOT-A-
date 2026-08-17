@@ -1,0 +1,26 @@
+a = [5, 10, 15, 20, 25, 30, 35]
+key = 25
+
+low = 0
+high = len(a) - 1
+count = 0
+found = False
+
+while low <= high:
+    count += 1
+    mid = (low + high) // 2
+
+    if a[mid] == key:
+        found = True
+        break
+    elif a[mid] < key:
+        low = mid + 1
+    else:
+        high = mid - 1
+
+if found:
+    print("Element found")
+else:
+    print("Element not found")
+
+print("Iterations =", count)
