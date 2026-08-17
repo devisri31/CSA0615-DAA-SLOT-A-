@@ -1,0 +1,17 @@
+a = [450, 520, 480, 610, 430, 590]
+
+def find_min_max(a, low, high):
+    if low == high:
+        return a[low], a[low]
+
+    mid = (low + high) // 2
+
+    min1, max1 = find_min_max(a, low, mid)
+    min2, max2 = find_min_max(a, mid + 1, high)
+
+    return min(min1, min2), max(max1, max2)
+
+minimum, maximum = find_min_max(a, 0, len(a) - 1)
+
+print("Minimum Stock Price =", minimum)
+print("Maximum Stock Price =", maximum)
