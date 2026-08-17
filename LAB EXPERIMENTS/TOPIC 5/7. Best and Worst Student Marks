@@ -1,0 +1,17 @@
+a = [78, 92, 65, 88, 95, 72, 81, 69]
+
+def find_min_max(a, low, high):
+    if low == high:
+        return a[low], a[low]
+
+    mid = (low + high) // 2
+
+    min1, max1 = find_min_max(a, low, mid)
+    min2, max2 = find_min_max(a, mid + 1, high)
+
+    return min(min1, min2), max(max1, max2)
+
+minimum, maximum = find_min_max(a, 0, len(a) - 1)
+
+print("Minimum Mark =", minimum)
+print("Maximum Mark =", maximum)
