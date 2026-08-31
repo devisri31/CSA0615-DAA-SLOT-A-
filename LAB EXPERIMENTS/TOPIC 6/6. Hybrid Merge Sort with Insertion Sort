@@ -1,0 +1,49 @@
+a = [12,11,13,5,6,7,3,2]
+threshold = 4
+
+def insertion_sort(a, left, right):
+    for i in range(left+1, right+1):
+        key = a[i]
+        j = i-1
+        while j >= left and a[j] > key:
+            a[j+1] = a[j]
+            j -= 1
+        a[j+1] = key
+
+def merge(a, left, mid, right):
+    l = a[left:mid+1]
+    r = a[mid+1:right+1]
+    i = j = 0
+    k = left
+
+    while i < len(l) and j < len(r):
+        if l[i] <= r[j]:
+            a[k] = l[i]
+            i += 1
+        else:
+            a[k] = r[j]
+            j += 1
+        k += 1
+
+    while i < len(l):
+        a[k] = l[i]
+        i += 1
+        k += 1
+
+    while j < len(r):
+        a[k] = r[j]
+        j += 1
+        k += 1
+
+def hybrid_merge_sort(a, left, right):
+    if right-left+1 <= threshold:
+        insertion_sort(a, left, right)
+        return
+
+    mid = (left+right)//2
+    hybrid_merge_sort(a, left, mid)
+    hybrid_merge_sort(a, mid+1, right)
+    merge(a, left, mid, right)
+
+hybrid_merge_sort(a, 0, len(a)-1)
+print(*a, sep=",")
