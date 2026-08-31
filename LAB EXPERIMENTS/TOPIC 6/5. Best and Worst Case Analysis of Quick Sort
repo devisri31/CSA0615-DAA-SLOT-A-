@@ -1,0 +1,40 @@
+def quick_sort(a):
+    global count
+
+    def partition(low, high):
+        global count
+        pivot = a[high]
+        i = low - 1
+
+        for j in range(low, high):
+            count += 1
+            if a[j] <= pivot:
+                i += 1
+                a[i], a[j] = a[j], a[i]
+
+        a[i+1], a[high] = a[high], a[i+1]
+        return i+1
+
+    def sort(low, high):
+        if low < high:
+            p = partition(low, high)
+            sort(low, p-1)
+            sort(p+1, high)
+
+    sort(0, len(a)-1)
+
+a = [1,2,3,4,5]
+count = 0
+quick_sort(a)
+
+print("Best Case")
+print(*a, sep=",")
+print("Comparisons :", count)
+
+a = [5,4,3,2,1]
+count = 0
+quick_sort(a)
+
+print("Worst Case")
+print(*a, sep=",")
+print("Comparisons :", count)
